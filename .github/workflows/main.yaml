@@ -17,8 +17,20 @@ jobs:
         with:
           fetch-depth: 0
           submodules: recursive
+      - uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '8'
+      - run: rm -f ~/.m2/settings.xml
       - name: Build Hawkbit
-        run: cd hawkbit && mvn clean install
+        # do not run tests eclipse hawkbit will do it for us
+        run: cd hawkbit && mvn clean install -DskipTests
+      #- uses: actions/setup-java@v2
+      #  with:
+      #    distribution: 'adopt'
+      #    java-version: '11'
+      #    overwrite-settings: false
+      #- run: rm -f ~/.m2/settings.xml
       - name: Build Inoa Hawkbit
         run: mvn clean install
       - name: Login to GitHub Container Registry

@@ -1,9 +1,9 @@
 package io.inoa.cloud.hawkbit;
 
 import org.eclipse.hawkbit.ui.AbstractHawkbitUI;
+import org.eclipse.hawkbit.ui.ErrorView;
 import org.eclipse.hawkbit.ui.UiProperties;
 import org.eclipse.hawkbit.ui.components.NotificationUnreadButton;
-import org.eclipse.hawkbit.ui.error.ErrorView;
 import org.eclipse.hawkbit.ui.menu.DashboardMenu;
 import org.eclipse.hawkbit.ui.push.EventPushStrategy;
 import org.eclipse.hawkbit.ui.push.UIEventProvider;
@@ -13,7 +13,6 @@ import org.springframework.context.ApplicationContext;
 import org.vaadin.spring.events.EventBus.UIEventBus;
 
 import com.vaadin.annotations.Push;
-import com.vaadin.server.ErrorHandler;
 import com.vaadin.shared.communication.PushMode;
 import com.vaadin.shared.ui.ui.Transport;
 import com.vaadin.spring.annotation.SpringUI;
@@ -42,9 +41,9 @@ public class MyUI extends AbstractHawkbitUI {
     MyUI(final EventPushStrategy pushStrategy, final UIEventBus eventBus, final UIEventProvider eventProvider,
             final SpringViewProvider viewProvider, final ApplicationContext context, final DashboardMenu dashboardMenu,
             final ErrorView errorview, final NotificationUnreadButton notificationUnreadButton,
-            final UiProperties uiProperties, final VaadinMessageSource i18n, final ErrorHandler uiErrorHandler) {
+            final UiProperties uiProperties, final VaadinMessageSource i18n) {
         super(pushStrategy, eventBus, eventProvider, viewProvider, context, dashboardMenu, errorview,
-                notificationUnreadButton, uiProperties, i18n, uiErrorHandler);
+                notificationUnreadButton, uiProperties, i18n);
     }
 
 }

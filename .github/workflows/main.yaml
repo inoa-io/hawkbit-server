@@ -21,3 +21,11 @@ jobs:
         run: cd hawkbit && mvn clean install
       - name: Build Inoa Hawkbit
         run: mvn clean install
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GIT_ACTION_TOKEN }}
+      - name: docker push backend
+        run: docker push ghcr.io/inoa-cloud/hawkbit-server:latest

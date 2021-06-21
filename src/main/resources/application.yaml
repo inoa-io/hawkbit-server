@@ -1,0 +1,11 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+
+  #jpa:
+  #  database: DB2
+  #datasource:
+  #  url: jdbc:db2://localhost:50000/hawkbit
+  #  username: db2inst1
+  #  password: db2inst1-pwd
+  #  driverClassName: com.ibm.db2.jcc.DB2Driver

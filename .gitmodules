@@ -1,0 +1,3 @@
+[submodule "hawkbit"]
+	path = hawkbit
+	url = git@github.com:eclipse/hawkbit.git

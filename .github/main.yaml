@@ -1,0 +1,23 @@
+name: Main
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - '*'
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          submodules: recursive
+      - name: Build Hawkbit
+        run: cd hawkbit && mvn clean install
+      - name: Build Inoa Hawkbit
+        run: mvn clean install

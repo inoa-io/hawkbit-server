@@ -9,3 +9,18 @@ spring:
   #  username: db2inst1
   #  password: db2inst1-pwd
   #  driverClassName: com.ibm.db2.jcc.DB2Driver
+
+hawkbit:
+  controller:
+    pollingTime: 00:10:00
+    pollingOverdueTime: 00:05:00
+  server:
+    ddi:
+      security:
+        authentication:
+          targettoken:
+            enabled: true
+    tenant:
+      configuration:
+        authentication-targettoken-enabled:
+          defaultValue: true

@@ -14,7 +14,8 @@
 
 
 	<properties>
-		<image.path>ghcr.io/inoa-cloud/${project.name}</image.path>
+		<docker.image.repository>ghcr.io/inoa-cloud</docker.image.repository>
+		<docker.image.version>${project.version}</docker.image.version>
 		<hawkbit.project.version>0.3.0-SNAPSHOT</hawkbit.project.version>
 		<spring.boot.version>2.3.7.RELEASE</spring.boot.version>
 		<spring.cloud.version>Hoxton.SR7</spring.cloud.version>
@@ -81,7 +82,25 @@
 			<artifactId>mariadb-java-client</artifactId>
 			<version>2.7.2</version>
 		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.20</version>
+			<scope>provided</scope>
+		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<version>2.3.7.RELEASE</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.github.tomakehurst</groupId>
+			<artifactId>wiremock-jre8-standalone</artifactId>
+			<version>2.31.0</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -116,10 +135,7 @@
 						<image>adoptopenjdk/openjdk8:jre8u282-b08-alpine</image>
 					</from>
 					<to>
-						<image>${image.path}</image>
-						<tags>
-							<tag>latest</tag>
-						</tags>
+						<image>${docker.image.repository}/${project.artifactId}:${docker.image.version}</image>
 					</to>
 				</configuration>
 				<executions>

@@ -66,3 +66,4 @@ docs/themes/**
 docs/public/**
 docs/content/rest-api/*.html
 .gitmodules
+src/main/resources/application-dev.yaml

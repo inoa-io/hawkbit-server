@@ -193,7 +193,7 @@ public class HonoDeviceSync {
         try {
             HttpURLConnection connection = getHonoData(
                     honoProperties.getCredentialsListUri().replace("$tenantId", inoaProperties.getDefaultTenant())
-                            .replace("$deviceId", deviceId), tenant);
+                            .replace("$deviceId", deviceId), inoaProperties.getDefaultTenant());
             List<HonoCredentials> honoCredentials = objectMapper
                     .readValue(connection.getInputStream(), new TypeReference<List<HonoCredentials>>() {
 
@@ -204,10 +204,10 @@ public class HonoDeviceSync {
             if (password.isPresent()) {
                 HonoSecret remoteSecret = password.get().getSecrets().get(0);
                 connection = getHonoData(
-                        honoProperties.getCredentialsSecretListUri().replace("$tenantId", tenant)
+                        honoProperties.getCredentialsSecretListUri().replace("$tenantId", inoaProperties.getDefaultTenant())
                                 .replace("$deviceId", deviceId)
                                 .replace("$credentialId", password.get().getCredentialId())
-                                .replace("$secretId", remoteSecret.getId()), tenant);
+                                .replace("$secretId", remoteSecret.getId()), inoaProperties.getDefaultTenant());
 
                 HonoSecret secret = objectMapper
                         .readValue(connection.getInputStream(), HonoSecret.class);
@@ -216,7 +216,7 @@ public class HonoDeviceSync {
             }
             return null;
         } catch (IOException e) {
-            log.error("Could not read credentials for device '{}/{}'.", tenant, deviceId, e);
+            log.error("Could not read credentials for device '{}/{}'.", inoaProperties.getDefaultTenant(), deviceId, e);
             return null;
         }
     }

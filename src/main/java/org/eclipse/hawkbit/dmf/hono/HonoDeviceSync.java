@@ -64,8 +64,6 @@ public class HonoDeviceSync {
 
     private final HonoProperties honoProperties;
 
-    private final InoaProperties inoaProperties;
-
     private final RestTemplate restTemplate;
 
     private final ObjectMapper objectMapper = new ObjectMapper();
@@ -192,8 +190,8 @@ public class HonoDeviceSync {
     public DeviceSecret getAllHonoCredentials(String tenant, String deviceId) {
         try {
             HttpURLConnection connection = getHonoData(
-                    honoProperties.getCredentialsListUri().replace("$tenantId", inoaProperties.getDefaultTenant())
-                            .replace("$deviceId", deviceId), inoaProperties.getDefaultTenant());
+                    honoProperties.getCredentialsListUri().replace("$tenantId", tenant)
+                            .replace("$deviceId", deviceId), tenant);
             List<HonoCredentials> honoCredentials = objectMapper
                     .readValue(connection.getInputStream(), new TypeReference<List<HonoCredentials>>() {
 
@@ -204,10 +202,10 @@ public class HonoDeviceSync {
             if (password.isPresent()) {
                 HonoSecret remoteSecret = password.get().getSecrets().get(0);
                 connection = getHonoData(
-                        honoProperties.getCredentialsSecretListUri().replace("$tenantId", inoaProperties.getDefaultTenant())
+                        honoProperties.getCredentialsSecretListUri().replace("$tenantId", tenant)
                                 .replace("$deviceId", deviceId)
                                 .replace("$credentialId", password.get().getCredentialId())
-                                .replace("$secretId", remoteSecret.getId()), inoaProperties.getDefaultTenant());
+                                .replace("$secretId", remoteSecret.getId()), tenant);
 
                 HonoSecret secret = objectMapper
                         .readValue(connection.getInputStream(), HonoSecret.class);
@@ -216,7 +214,7 @@ public class HonoDeviceSync {
             }
             return null;
         } catch (IOException e) {
-            log.error("Could not read credentials for device '{}/{}'.", inoaProperties.getDefaultTenant(), deviceId, e);
+            log.error("Could not read credentials for device '{}/{}'.", tenant, deviceId, e);
             return null;
         }
     }

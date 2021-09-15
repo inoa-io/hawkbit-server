@@ -116,4 +116,21 @@ public class HonoDeviceSyncTest {
         assertEquals(200, exchange.getStatusCodeValue());
 
     }
+
+    @Test
+    public void testDeviceAuthenticationAfterSyncAndReadableTenant() {
+        assertNotNull(honoDeviceSync);
+        honoDeviceSync.synchronize(false);
+
+        final HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", "HonoToken test");
+        HttpEntity<String> entity = new HttpEntity<>(null, headers);
+
+        ResponseEntity<JsonNode> exchange = testRestTemplate.getRestTemplate()
+                .exchange("/inoa/controller/v1/4437e4ea-1548-11ec-a507-bb528caa9277",
+                        HttpMethod.GET, entity,
+                        JsonNode.class);
+        assertEquals(200, exchange.getStatusCodeValue(), exchange.getBody().toString());
+
+    }
 }

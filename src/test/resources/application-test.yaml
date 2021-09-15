@@ -4,15 +4,15 @@ hawkbit:
       enabled: false
     hono:
       authentication-method: oidc
-      credentials-list-uri: http://localhost/api/gateway-registry/gateways/$deviceId/credentials
-      credentials-secret-list-uri: http://localhost/api/gateway-registry/gateways/$deviceId/credentials/$credentialId/secrets/$secretId
-      device-list-uri: http://localhost/api/gateway-registry/gateways
+      #credentials-list-uri: http://localhost/api/gateway-registry/gateways/$deviceId/credentials
+      #credentials-secret-list-uri: http://localhost/api/gateway-registry/gateways/$deviceId/credentials/$credentialId/secrets/$secretId
+      #device-list-uri: http://localhost/api/gateway-registry/gateways
       enabled: true
       oidc-client-id: hawkbit
       oidc-client-secret: changeMe
-      oidc-token-uri: http://localhost/realms/grayc/protocol/openid-connect/token
+      #oidc-token-uri: http://localhost/realms/grayc/protocol/openid-connect/token
       target-name-field: GatewaySerial
-      tenant-list-uri: http://localhost/api/gateway-registry/tenants
+      #tenant-list-uri: http://localhost/api/gateway-registry/tenants
   controller:
     pollingTime: 00:10:00
     pollingOverdueTime: 00:05:00

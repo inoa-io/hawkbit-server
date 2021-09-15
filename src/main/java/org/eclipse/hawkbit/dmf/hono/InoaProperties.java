@@ -1,4 +1,4 @@
-package org.eclipse.hawkbit.autoconfigure.security;
+package org.eclipse.hawkbit.dmf.hono;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

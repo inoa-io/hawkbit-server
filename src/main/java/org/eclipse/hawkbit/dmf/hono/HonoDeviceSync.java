@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.eclipse.hawkbit.autoconfigure.security.InoaProperties;
 import org.eclipse.hawkbit.dmf.hono.model.DeviceSecret;
 import org.eclipse.hawkbit.dmf.hono.model.HonoCredentials;
 import org.eclipse.hawkbit.dmf.hono.model.HonoSecret;

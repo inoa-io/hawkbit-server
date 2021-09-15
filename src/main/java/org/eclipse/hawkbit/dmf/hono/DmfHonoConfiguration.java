@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 @ConditionalOnProperty(prefix = "hawkbit.dmf.hono", name = "enabled")
 @ComponentScan
-@EnableConfigurationProperties(HonoProperties.class)
+@EnableConfigurationProperties({ HonoProperties.class, InoaProperties.class })
 public class DmfHonoConfiguration {
 
     @Bean

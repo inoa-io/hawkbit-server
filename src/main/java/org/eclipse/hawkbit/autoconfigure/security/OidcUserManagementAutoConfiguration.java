@@ -8,6 +8,7 @@
  */
 package org.eclipse.hawkbit.autoconfigure.security;
 
+import org.eclipse.hawkbit.dmf.hono.InoaProperties;
 import org.eclipse.hawkbit.im.authentication.TenantAwareAuthenticationDetails;
 import org.eclipse.hawkbit.im.authentication.UserAuthenticationFilter;
 import org.eclipse.hawkbit.repository.SystemManagement;
@@ -74,7 +75,6 @@ import java.util.Set;
  */
 @Configuration
 @Conditional(value = ClientsConfiguredCondition.class)
-@EnableConfigurationProperties(InoaProperties.class)
 public class OidcUserManagementAutoConfiguration {
 
     /**

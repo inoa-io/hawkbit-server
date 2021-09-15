@@ -1,8 +1,6 @@
 package org.eclipse.hawkbit.security;
 
 import org.eclipse.hawkbit.dmf.hono.HonoDeviceSync;
-import org.eclipse.hawkbit.dmf.hono.model.HonoCredentials;
-import org.eclipse.hawkbit.dmf.hono.model.HonoSecret;
 import org.eclipse.hawkbit.repository.ControllerManagement;
 import org.eclipse.hawkbit.repository.TenantConfigurationManagement;
 import org.eclipse.hawkbit.repository.model.Target;
@@ -11,7 +9,6 @@ import org.eclipse.hawkbit.tenancy.configuration.TenantConfigurationProperties.T
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Collection;
 import java.util.Optional;
 
 /**

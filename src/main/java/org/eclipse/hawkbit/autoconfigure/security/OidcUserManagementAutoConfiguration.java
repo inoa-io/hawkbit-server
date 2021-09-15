@@ -309,6 +309,9 @@ class OidcBearerTokenAuthenticationFilter implements UserAuthenticationFilter, F
     @Autowired
     private SystemSecurityContext systemSecurityContext;
 
+    @Autowired
+    private InoaProperties inoaProperties;
+
     private ClientRegistration clientRegistration;
 
     void setClientRegistration(final ClientRegistration clientRegistration) {
@@ -321,7 +324,7 @@ class OidcBearerTokenAuthenticationFilter implements UserAuthenticationFilter, F
 
         final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication instanceof JwtAuthenticationToken) {
-            final String defaultTenant = "DEFAULT";
+            final String defaultTenant = inoaProperties.getDefaultTenant();
 
             final JwtAuthenticationToken jwtAuthenticationToken = (JwtAuthenticationToken) authentication;
             final Jwt jwt = jwtAuthenticationToken.getToken();

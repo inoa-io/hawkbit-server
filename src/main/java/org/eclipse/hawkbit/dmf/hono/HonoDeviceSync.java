@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.eclipse.hawkbit.autoconfigure.security.InoaProperties;
 import org.eclipse.hawkbit.dmf.hono.model.DeviceSecret;
 import org.eclipse.hawkbit.dmf.hono.model.HonoCredentials;
 import org.eclipse.hawkbit.dmf.hono.model.HonoSecret;
@@ -63,6 +64,8 @@ public class HonoDeviceSync {
     private final PermissionService permissionService;
 
     private final HonoProperties honoProperties;
+
+    private final InoaProperties inoaProperties;
 
     private final RestTemplate restTemplate;
 
@@ -190,7 +193,7 @@ public class HonoDeviceSync {
     public DeviceSecret getAllHonoCredentials(String tenant, String deviceId) {
         try {
             HttpURLConnection connection = getHonoData(
-                    honoProperties.getCredentialsListUri().replace("$tenantId", tenant)
+                    honoProperties.getCredentialsListUri().replace("$tenantId", inoaProperties.getDefaultTenant())
                             .replace("$deviceId", deviceId), tenant);
             List<HonoCredentials> honoCredentials = objectMapper
                     .readValue(connection.getInputStream(), new TypeReference<List<HonoCredentials>>() {

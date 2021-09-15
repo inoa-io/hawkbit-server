@@ -867,14 +867,12 @@ class TenantMetadataSavedRequestAwareVaadinAuthenticationSuccessHandler extends 
 
     @Override
     public void onAuthenticationSuccess(final Authentication authentication) throws Exception {
-        log.info("lalala: {}", authentication.getDetails());
         systemSecurityContext.runAsSystemAsTenant(systemManagement::getTenantMetadata, getTenantFrom(authentication));
 
         super.onAuthenticationSuccess(authentication);
     }
 
     private static String getTenantFrom(final Authentication authentication) {
-        log.info("{}", authentication.getDetails());
         final Object details = authentication.getDetails();
         if (details instanceof TenantAwareAuthenticationDetails) {
             return ((TenantAwareAuthenticationDetails) details).getTenant();

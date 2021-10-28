@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -8,10 +7,10 @@
 		<artifactId>hawkbit-runtime-parent</artifactId>
 		<version>0.3.0M7</version>
 	</parent>
+
 	<groupId>io.inoa.cloud.hawkbit</groupId>
 	<artifactId>hawkbit-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-
 
 	<properties>
 		<docker.image.repository>ghcr.io/inoa-cloud</docker.image.repository>
@@ -62,6 +61,13 @@
 		<dependency>
 			<groupId>io.micrometer</groupId>
 			<artifactId>micrometer-registry-prometheus</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.nimbusds</groupId>
+			<artifactId>oauth2-oidc-sdk</artifactId>
+			<version>9.19</version>
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>

@@ -209,7 +209,6 @@ public class HonoDeviceSync {
 
                 HonoSecret secret = objectMapper
                         .readValue(connection.getInputStream(), HonoSecret.class);
-                log.info("{}", secret);
                 return new DeviceSecret(tenant, deviceId, secret);
             }
             return null;

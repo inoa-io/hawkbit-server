@@ -24,3 +24,8 @@ hawkbit:
       configuration:
         authentication-targettoken-enabled:
           defaultValue: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,prometheus"

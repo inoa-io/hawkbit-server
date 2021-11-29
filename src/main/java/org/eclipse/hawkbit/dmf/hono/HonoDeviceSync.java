@@ -266,7 +266,7 @@ public class HonoDeviceSync {
             }
             connection.setRequestProperty("Authorization", "Bearer " + oidcAccessToken);
             if (tenantId != null) {
-                connection.setRequestProperty("x-inoa-tenant", tenantId);
+                connection.setRequestProperty("x-tenant-id", tenantId);
             }
             break;
         }

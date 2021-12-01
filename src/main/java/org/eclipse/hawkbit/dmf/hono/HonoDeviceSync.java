@@ -11,6 +11,7 @@ import org.eclipse.hawkbit.dmf.hono.model.HonoCredentials;
 import org.eclipse.hawkbit.dmf.hono.model.HonoSecret;
 import org.eclipse.hawkbit.dmf.hono.model.IdentifiableHonoDevice;
 import org.eclipse.hawkbit.dmf.hono.model.IdentifiableHonoTenant;
+import org.eclipse.hawkbit.dmf.hono.model.PageList;
 import org.eclipse.hawkbit.im.authentication.PermissionService;
 import org.eclipse.hawkbit.repository.EntityFactory;
 import org.eclipse.hawkbit.repository.SystemManagement;
@@ -174,11 +175,11 @@ public class HonoDeviceSync {
         HttpURLConnection connection = getHonoData(honoProperties.getDeviceListUri().replace("$tenantId", tenant)
                 + (honoProperties.getDeviceListUri().contains("?") ? "&" : "?") + "offset=" + offset, tenant);
 
-        List<IdentifiableHonoDevice> page = objectMapper
-                .readValue(connection.getInputStream(), new TypeReference<List<IdentifiableHonoDevice>>() {
+        PageList<IdentifiableHonoDevice> page = objectMapper
+                .readValue(connection.getInputStream(), new TypeReference<PageList<IdentifiableHonoDevice>>() {
 
                 });
-        for (IdentifiableHonoDevice identifiableHonoDevice : page) {
+        for (IdentifiableHonoDevice identifiableHonoDevice : page.getContent()) {
             devices.put(identifiableHonoDevice.getId(), identifiableHonoDevice);
         }
         return devices;

@@ -64,6 +64,8 @@ public class HonoDeviceSync {
 
     private final HonoProperties honoProperties;
 
+    private final InoaProperties inoaProperties;
+
     private final RestTemplate restTemplate;
 
     private final ObjectMapper objectMapper = new ObjectMapper();
@@ -86,26 +88,21 @@ public class HonoDeviceSync {
         // Since ApplicationReadyEvent is emitted multiple times make sure it is synced at most once during startup.
         if (!syncedInitially) {
             syncedInitially = true;
-            synchronize(false);
+            synchronize(true);
         }
     }
 
     public void synchronize(boolean syncOnlyCurrentTenant) {
         try {
-            String currentTenant = null;
             if (syncOnlyCurrentTenant) {
-                currentTenant = systemManagement.currentTenant();
-            }
-
-            List<IdentifiableHonoTenant> tenants = getAllHonoTenants();
-            for (IdentifiableHonoTenant honoTenant : tenants) {
-                String tenant = honoTenant.getId();
-
-                if (syncOnlyCurrentTenant && !tenant.equals(currentTenant)) {
-                    continue;
+                String currentTenant = inoaProperties.getDefaultTenant();
+                synchronizeTenant(currentTenant);
+            }else {
+                List<IdentifiableHonoTenant> tenants = getAllHonoTenants();
+                for (IdentifiableHonoTenant honoTenant : tenants) {
+                    String tenant = honoTenant.getId();
+                    synchronizeTenant(tenant);
                 }
-
-                synchronizeTenant(tenant);
             }
         } catch (IOException e) {
             log.error("Could not parse hono api response.", e);

@@ -7,9 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
 
 @SpringBootApplication
-@Import({ SecurityManagedConfiguration.class, DmfHonoConfiguration.class })
+@Import({SecurityManagedConfiguration.class, DmfHonoConfiguration.class})
 // Exception squid:S1118 - Spring boot standard behavior
-@SuppressWarnings({ "squid:S1118" })
+@SuppressWarnings({"squid:S1118"})
 public class Application {
 
     /**
@@ -18,7 +18,7 @@ public class Application {
      * @param args the VM arguments.
      */
     // Exception squid:S2095 - Spring boot standard behavior
-    @SuppressWarnings({ "squid:S2095" })
+    @SuppressWarnings({"squid:S2095"})
     public static void main(final String[] args) {
         SpringApplication.run(Application.class, args);
     }

@@ -27,7 +27,7 @@ jobs:
       - uses: actions/setup-java@v2
         with:
           distribution: 'adopt'
-          java-version: '8'
+          java-version: '11'
       - run: rm -f ~/.m2/settings.xml
       - name: Build Hawkbit
         # do not run tests eclipse hawkbit will do it for us
@@ -47,4 +47,4 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GIT_ACTION_TOKEN }}
       - name: docker push backend
-        run: docker push --all-tags ghcr.io/inoa-cloud/hawkbit-server
+        run: docker push --all-tags ghcr.io/inoa-io/hawkbit-server

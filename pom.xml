@@ -13,12 +13,32 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
-		<docker.image.repository>ghcr.io/inoa-cloud</docker.image.repository>
+		<docker.image.repository>ghcr.io/inoa-io</docker.image.repository>
 		<docker.image.version>${project.version}</docker.image.version>
 		<hawkbit.project.version>0.3.0-SNAPSHOT</hawkbit.project.version>
-		<spring.boot.version>2.3.7.RELEASE</spring.boot.version>
-		<spring.cloud.version>Hoxton.SR7</spring.cloud.version>
-		<version.java>1.8</version.java>
+		<spring.boot.version>2.3.12.RELEASE</spring.boot.version>
+		<spring.cloud.version>Hoxton.SR12</spring.cloud.version>
+
+		<!-- we pin version see hawkbit parent pom -->
+		<!-- Misc libraries versions - START -->
+		<cron-utils.version>9.1.6</cron-utils.version>
+		<jsoup.version>1.15.3</jsoup.version>
+		<allure.version>2.13.6</allure.version>
+		<eclipselink.version>2.7.11</eclipselink.version>
+		<eclipselink.maven.plugin.version>2.7.9.1</eclipselink.maven.plugin.version>
+		<jaxb-api.version>2.3.0</jaxb-api.version>
+		<gwtmockito.version>1.1.8</gwtmockito.version>
+		<guava.version>30.1.1-jre</guava.version>
+		<javax.el-api.version>2.2.4</javax.el-api.version>
+		<corn-cps.version>1.1.7</corn-cps.version>
+		<jlorem.version>1.1</jlorem.version>
+		<commons-io.version>2.11.0</commons-io.version>
+		<rsql-parser.version>2.1.0</rsql-parser.version>
+		<awaitility.version>3.1.2</awaitility.version>
+		<io-protostuff.version>1.5.6</io-protostuff.version>
+
+
+		<version.java>11</version.java>
 	</properties>
 
 	<dependencyManagement>
@@ -66,7 +86,7 @@
 		<dependency>
 			<groupId>com.nimbusds</groupId>
 			<artifactId>oauth2-oidc-sdk</artifactId>
-			<version>9.19</version>
+			<version>9.22.2</version>
 			<scope>runtime</scope>
 		</dependency>
 
@@ -138,7 +158,7 @@
 				<version>1.2.0</version>
 				<configuration>
 					<from>
-						<image>adoptopenjdk/openjdk8:jre8u282-b08-alpine</image>
+						<image>eclipse-temurin:11-jre</image>
 					</from>
 					<to>
 						<image>${docker.image.repository}/${project.artifactId}:${docker.image.version}</image>

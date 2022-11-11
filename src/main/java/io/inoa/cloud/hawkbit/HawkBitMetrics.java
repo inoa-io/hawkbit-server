@@ -5,6 +5,7 @@ import io.micrometer.core.instrument.MultiGauge;
 import io.micrometer.core.instrument.Tag;
 import io.micrometer.core.instrument.Tags;
 import org.eclipse.hawkbit.repository.DeploymentManagement;
+import org.eclipse.hawkbit.repository.FilterParams;
 import org.eclipse.hawkbit.repository.RolloutManagement;
 import org.eclipse.hawkbit.repository.SoftwareModuleManagement;
 import org.eclipse.hawkbit.repository.TargetManagement;
@@ -205,7 +206,7 @@ public class HawkBitMetrics {
         Long count = 0L;
         for (String tenant : tenants) {
             count += systemSecurityContext.runAsSystemAsTenant(() ->
-                    targetManagement.countByFilters(status, overdueStatus, null, null, null), tenant);
+                    targetManagement.countByFilters(new FilterParams(status, overdueStatus, null, null, null)), tenant);
         }
         return count;
     }

@@ -50,7 +50,7 @@ public class PreAuthHonoAuthenticationProvider extends PreAuthTokenSourceTrustAu
         DeviceSecret secret = (DeviceSecret) credentials;
 
         boolean successAuthentication = new HeaderAuthentication(secret.getDeviceId(),
-                new String(secret.getSecret().getPassword()))
+                new String(secret.getSecret().getValue()))
                 .equals(principal);
 
         if (successAuthentication) {

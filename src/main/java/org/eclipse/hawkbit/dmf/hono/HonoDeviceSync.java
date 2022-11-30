@@ -196,20 +196,8 @@ public class HonoDeviceSync {
                     });
 
             Optional<HonoCredentials> password = honoCredentials.stream()
-                    .filter(i -> i.getType().equals("password")).findFirst();
-            if (password.isPresent()) {
-                HonoSecret remoteSecret = password.get().getSecrets().get(0);
-                connection = getHonoData(
-                        honoProperties.getCredentialsSecretListUri().replace("$tenantId", tenant)
-                                .replace("$deviceId", deviceId)
-                                .replace("$credentialId", password.get().getCredentialId())
-                                .replace("$secretId", remoteSecret.getId()), tenant);
-
-                HonoSecret secret = objectMapper
-                        .readValue(connection.getInputStream(), HonoSecret.class);
-                return new DeviceSecret(tenant, deviceId, secret);
-            }
-            return null;
+                    .filter(i -> i.getType().equals("psk")).findFirst();
+            return password.map(credentials -> new DeviceSecret(tenant, deviceId, credentials)).orElse(null);
         } catch (IOException e) {
             log.error("Could not read credentials for device '{}/{}'.", tenant, deviceId, e);
             return null;

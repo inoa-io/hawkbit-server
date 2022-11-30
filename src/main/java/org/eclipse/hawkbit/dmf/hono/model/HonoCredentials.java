@@ -11,9 +11,7 @@ public class HonoCredentials {
 
     @JsonProperty("credential_id")
     private String credentialId;
-    @JsonProperty("auth_id")
-    private String authId;
     private String type;
-    private List<HonoSecret> secrets = new ArrayList<>();
+    private byte[] value;
 
 }

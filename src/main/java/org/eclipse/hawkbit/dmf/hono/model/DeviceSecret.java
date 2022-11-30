@@ -11,6 +11,6 @@ public class DeviceSecret {
 
     private String tenantId;
     private String deviceId;
-    private HonoSecret secret;
+    private HonoCredentials secret;
 
 }
